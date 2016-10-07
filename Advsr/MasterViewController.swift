@@ -7,24 +7,56 @@
 //
 
 import UIKit
+import Firebase
 
 class MasterViewController: UITableViewController {
 
+    var ref: FIRDatabaseReference!
+    
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var posts = [Post]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        ref = FIRDatabase.database().reference()
+        let postsQuery = ref.child("posts").queryOrdered(byChild: "date")
+        
+        postsQuery.observe(.value) { (data: FIRDataSnapshot) -> Void in
+            self.posts = Post.getBatchPosts(wholeSnapshot: data)
+            self.tableView.reloadData()
+        }
+        
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPost))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+    }
+    
+    func addPost() {
+        let alert = UIAlertController(title: "Ask a Question", message: "Type in your question below.", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Question"
+        }
+        
+        alert.addAction(
+            UIAlertAction(title: "Ask!", style: .default) { action in
+                let value = ["question": alert.textFields![0].text!, "comments": [:]] as [String : Any]
+                self.ref.child("posts").childByAutoId().setValue(value)
+            }
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true)
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,20 +69,14 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
-    }
-
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let post = posts[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.post = post
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -64,29 +90,16 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return posts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MasterViewCell
+        let post = posts[indexPath.row]
+        cell.post = post
+        cell.questionTitle.text = post.question
+        
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
     }
 
 

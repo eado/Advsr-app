@@ -13,6 +13,17 @@
 		212903301DA528A500F592AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2129032E1DA528A500F592AD /* Main.storyboard */; };
 		212903321DA528A500F592AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 212903311DA528A500F592AD /* Assets.xcassets */; };
 		212903351DA528A500F592AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 212903331DA528A500F592AD /* LaunchScreen.storyboard */; };
+		2129033F1DA5B06200F592AD /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2129033E1DA5B06200F592AD /* DetailViewCell.swift */; };
+		212903411DA5B20800F592AD /* MasterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212903401DA5B20800F592AD /* MasterViewCell.swift */; };
+		212903431DA5C8B800F592AD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 212903421DA5C8B800F592AD /* GoogleService-Info.plist */; };
+		2129034A1DA6732A00F592AD /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903441DA6732A00F592AD /* FirebaseAnalytics.framework */; };
+		2129034B1DA6732A00F592AD /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903451DA6732A00F592AD /* FirebaseCore.framework */; };
+		2129034C1DA6732A00F592AD /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903461DA6732A00F592AD /* FirebaseInstanceID.framework */; };
+		2129034D1DA6732A00F592AD /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903471DA6732A00F592AD /* GoogleInterchangeUtilities.framework */; };
+		2129034E1DA6732A00F592AD /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903481DA6732A00F592AD /* GoogleSymbolUtilities.framework */; };
+		2129034F1DA6732A00F592AD /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903491DA6732A00F592AD /* GoogleUtilities.framework */; };
+		212903511DA6735000F592AD /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212903501DA6735000F592AD /* FirebaseDatabase.framework */; };
+		212903551DA7122600F592AD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212903541DA7122600F592AD /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +35,19 @@
 		212903311DA528A500F592AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		212903341DA528A500F592AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		212903361DA528A500F592AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2129033E1DA5B06200F592AD /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		212903401DA5B20800F592AD /* MasterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewCell.swift; path = ../MasterViewCell.swift; sourceTree = "<group>"; };
+		212903421DA5C8B800F592AD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		212903441DA6732A00F592AD /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Firebase/Analytics/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		212903451DA6732A00F592AD /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Firebase/Analytics/FirebaseCore.framework; sourceTree = "<group>"; };
+		212903461DA6732A00F592AD /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Firebase/Analytics/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		212903471DA6732A00F592AD /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Firebase/Analytics/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		212903481DA6732A00F592AD /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Firebase/Analytics/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		212903491DA6732A00F592AD /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Firebase/Analytics/GoogleUtilities.framework; sourceTree = "<group>"; };
+		212903501DA6735000F592AD /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Firebase/Database/FirebaseDatabase.framework; sourceTree = "<group>"; };
+		212903521DA6742500F592AD /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		212903531DA6745B00F592AD /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		212903541DA7122600F592AD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +55,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212903511DA6735000F592AD /* FirebaseDatabase.framework in Frameworks */,
+				2129034F1DA6732A00F592AD /* GoogleUtilities.framework in Frameworks */,
+				2129034B1DA6732A00F592AD /* FirebaseCore.framework in Frameworks */,
+				2129034D1DA6732A00F592AD /* GoogleInterchangeUtilities.framework in Frameworks */,
+				2129034E1DA6732A00F592AD /* GoogleSymbolUtilities.framework in Frameworks */,
+				2129034C1DA6732A00F592AD /* FirebaseInstanceID.framework in Frameworks */,
+				2129034A1DA6732A00F592AD /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +73,13 @@
 			children = (
 				212903271DA528A500F592AD /* Advsr */,
 				212903261DA528A500F592AD /* Products */,
+				212903501DA6735000F592AD /* FirebaseDatabase.framework */,
+				212903441DA6732A00F592AD /* FirebaseAnalytics.framework */,
+				212903451DA6732A00F592AD /* FirebaseCore.framework */,
+				212903461DA6732A00F592AD /* FirebaseInstanceID.framework */,
+				212903471DA6732A00F592AD /* GoogleInterchangeUtilities.framework */,
+				212903481DA6732A00F592AD /* GoogleSymbolUtilities.framework */,
+				212903491DA6732A00F592AD /* GoogleUtilities.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +94,19 @@
 		212903271DA528A500F592AD /* Advsr */ = {
 			isa = PBXGroup;
 			children = (
+				212903401DA5B20800F592AD /* MasterViewCell.swift */,
+				212903541DA7122600F592AD /* Post.swift */,
 				212903281DA528A500F592AD /* AppDelegate.swift */,
 				2129032A1DA528A500F592AD /* MasterViewController.swift */,
 				2129032C1DA528A500F592AD /* DetailViewController.swift */,
 				2129032E1DA528A500F592AD /* Main.storyboard */,
+				212903421DA5C8B800F592AD /* GoogleService-Info.plist */,
+				2129033E1DA5B06200F592AD /* DetailViewCell.swift */,
 				212903311DA528A500F592AD /* Assets.xcassets */,
 				212903331DA528A500F592AD /* LaunchScreen.storyboard */,
 				212903361DA528A500F592AD /* Info.plist */,
+				212903521DA6742500F592AD /* Firebase.h */,
+				212903531DA6745B00F592AD /* module.modulemap */,
 			);
 			path = Advsr;
 			sourceTree = "<group>";
@@ -128,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				212903351DA528A500F592AD /* LaunchScreen.storyboard in Resources */,
+				212903431DA5C8B800F592AD /* GoogleService-Info.plist in Resources */,
 				212903321DA528A500F592AD /* Assets.xcassets in Resources */,
 				212903301DA528A500F592AD /* Main.storyboard in Resources */,
 			);
@@ -141,7 +186,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2129032D1DA528A500F592AD /* DetailViewController.swift in Sources */,
+				2129033F1DA5B06200F592AD /* DetailViewCell.swift in Sources */,
 				2129032B1DA528A500F592AD /* MasterViewController.swift in Sources */,
+				212903551DA7122600F592AD /* Post.swift in Sources */,
+				212903411DA5B20800F592AD /* MasterViewCell.swift in Sources */,
 				212903291DA528A500F592AD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,13 +313,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QG25EZWXDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Firebase/Analytics",
+					"$(PROJECT_DIR)/Firebase/Database",
+				);
 				INFOPLIST_FILE = Advsr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eaideasllc.Advsr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = Advsr;
 			};
 			name = Debug;
 		};
@@ -279,13 +335,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = QG25EZWXDW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Firebase/Analytics",
+					"$(PROJECT_DIR)/Firebase/Database",
+				);
 				INFOPLIST_FILE = Advsr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eaideasllc.Advsr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = Advsr;
 			};
 			name = Release;
 		};
