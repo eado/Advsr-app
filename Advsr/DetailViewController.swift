@@ -50,8 +50,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         alert.addAction(
             UIAlertAction(title: "Add Comment!", style: .default) { action in
-                let value = ["question": alert.textFields![0].text!, "comments": [:]] as [String : Any]
-                self.ref.child("posts/\(post!.postid)").childByAutoId().setValue(value)
+                let value = alert.textFields![0].text
+                self.ref.child("posts/\(post!.postid)/comments").childByAutoId().setValue(value)
             }
         )
         
