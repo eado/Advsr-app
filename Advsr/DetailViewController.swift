@@ -25,8 +25,10 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let post = self.post {
-            //return post.comments.count
-            return 0
+            guard let comments = post.comments else {
+                return 0
+            }
+            return comments.count
         } else {
             return 0
         }
@@ -35,12 +37,27 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "comment") as! DetailViewCell
-        // cell.commentLabel.text = post?.comments[indexPath.row].value
+        cell.commentLabel.text = post?.comments![indexPath.row].value
         return cell
     }
     
     @IBAction func addComment() {
+        let alert = UIAlertController(title: "Add a comment", message: "Type in your comment below.", preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            textField.placeholder = "Comment"
+        }
+        
+        alert.addAction(
+            UIAlertAction(title: "Add Comment!", style: .default) { action in
+                let value = ["question": alert.textFields![0].text!, "comments": [:]] as [String : Any]
+                self.ref.child("posts/\(post!.postid)").childByAutoId().setValue(value)
+            }
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true)
     }
     
 

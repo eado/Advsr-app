@@ -12,13 +12,22 @@ import Firebase
 struct Post {
     let postid: String
     let question: String
-    let comments: [String: String]?
+    let comments: [(key: String, value: String)]?
     
     init(snapshot: FIRDataSnapshot) {
         let value = snapshot.value! as! [String: AnyObject]
         postid = snapshot.key
         question = value["question"] as! String
-        comments = value["comments"] as? [String: String]
+        let commentsDict = value["comments"] as? [String: String]
+        if let commentsDict = commentsDict {
+            var array = [(key: String, value: String)]()
+            for value in commentsDict {
+                array.append(value)
+            }
+            comments = array
+        } else {
+            comments = nil
+        }
         
     }
     
