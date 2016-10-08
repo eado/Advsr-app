@@ -9,3 +9,7 @@ An anonymous advising column for the Minnetonka Public School District
 - Uses iOS default San Francisco font, but is set to ultra light.
 - The main interface is in a Split View Controller.
 - Firebase is used as a realtime database.
+
+## Will add
+- Ability to report questions/comments to an admin.
+- Screenshots on this README.
