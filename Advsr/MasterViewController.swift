@@ -20,12 +20,12 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        title = "Advsr"
         ref = FIRDatabase.database().reference()
         let postsQuery = ref.child("posts").queryOrdered(byChild: "date")
         
         postsQuery.observe(.value) { (data: FIRDataSnapshot) -> Void in
-            self.posts = Post.getBatchPosts(wholeSnapshot: data)
+            self.posts = Post.getBatchPosts(wholeSnapshot: data).reversed()
             self.tableView.reloadData()
         }
         

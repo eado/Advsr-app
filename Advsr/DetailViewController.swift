@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
+    var ref: FIRDatabaseReference!
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
@@ -36,7 +37,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "comment") as! DetailViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! DetailViewCell
         cell.commentLabel.text = post?.comments![indexPath.row].value
         return cell
     }
@@ -51,7 +52,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         alert.addAction(
             UIAlertAction(title: "Add Comment!", style: .default) { action in
                 let value = alert.textFields![0].text
-                self.ref.child("posts/\(post!.postid)/comments").childByAutoId().setValue(value)
+                self.ref.child("posts/\(self.post!.postid)/comments").childByAutoId().setValue(value)
             }
         )
         
@@ -63,10 +64,12 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if post == nil {
             view.isHidden = true
         }
         // Do any additional setup after loading the view, typically from a nib.
+        ref = FIRDatabase.database().reference()
         commentTableView.dataSource = self
         commentTableView.delegate = self
         self.configureView()
